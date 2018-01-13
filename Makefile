@@ -15,12 +15,11 @@ PKG_SOURCE_URL:=http://www.draisberghof.de/usb_modeswitch/
 PKG_LICENSE:=GPLv2
 PKG_LICENSE_FILES:=
 
-PKG_MAINTAINER:=alphakk <kkspaces@mail.com>
+PKG_MAINTAINER:=Robin He <robin@focalcrest.org>
 
 PKG_DATA_VERSION:=20170806
 PKG_DATA_PATH:=usb-modeswitch-data-$(PKG_DATA_VERSION)
 PKG_DATA_FILENAME:=$(PKG_DATA_PATH).tar.bz2
-#http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-20140529.tar.bz2
 PKG_DATA_URL:=http://www.draisberghof.de/usb_modeswitch
 
 include $(INCLUDE_DIR)/package.mk
@@ -43,9 +42,6 @@ define Build/Prepare
 	$(Build/Prepare/Default)
 	tar xvfj $(DL_DIR)/$(PKG_DATA_FILENAME) -C $(PKG_BUILD_DIR)
 	tar xvfj $(DL_DIR)/$(PKG_SOURCE) -C $(BUILD_DIR)
-	#mv $(PKG_BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION) $(PKG_BUILD_DIR)
-#	rm -f \
-#		$(PKG_BUILD_DIR)/$(PKG_DATA_PATH)/usb_modeswitch.d/05c6:1000:sVe=GT
 endef
 
 define Package/usb-modeswitch-official/install
@@ -55,7 +51,6 @@ define Package/usb-modeswitch-official/install
 	$(INSTALL_DATA) ./files/40-usbmodeswitch $(1)/etc/hotplug.d/usb/40-usbmodeswitch
 	$(INSTALL_DATA) $(PKG_BUILD_DIR)/usb_modeswitch.conf $(1)/etc/
 	$(INSTALL_DATA) ./files/usb_modeswitch.d/* $(1)/etc/usb_modeswitch.d/
-	#$(CP) $(PKG_INSTALL_DIR)/usr/sbin/usb_modeswitch $(1)/sbin/
 endef
 
 $(eval $(call BuildPackage,usb-modeswitch-official))
