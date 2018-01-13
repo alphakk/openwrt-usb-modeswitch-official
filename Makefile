@@ -1,24 +1,23 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=usb-modeswitch
-PKG_VERSION:=2.2.0
+PKG_VERSION:=2.5.2
 PKG_RELEASE=1
-PKG_MD5SUM:=f323fe700edd6ea404c40934ddf32b22
+PKG_MD5SUM:=16b9a8efa1bf8fbd7d5612757eae4f26
 
 PKG_BUILD_DIR := $(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
-PKG_SOURCE_VERSION:=2.2.0
+PKG_SOURCE_VERSION:=2.5.2
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
 PKG_SOURCE_URL:=http://www.draisberghof.de/usb_modeswitch/
-# http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-2.2.0.tar.bz2
 #CMAKE_INSTALL:=1
 
 PKG_LICENSE:=GPLv2
 PKG_LICENSE_FILES:=
 
-PKG_MAINTAINER:=Robin He <robin@focalcrest.org>
+PKG_MAINTAINER:=alphakk <kkspaces@mail.com>
 
-PKG_DATA_VERSION:=20140529
+PKG_DATA_VERSION:=20170806
 PKG_DATA_PATH:=usb-modeswitch-data-$(PKG_DATA_VERSION)
 PKG_DATA_FILENAME:=$(PKG_DATA_PATH).tar.bz2
 #http://www.draisberghof.de/usb_modeswitch/usb-modeswitch-data-20140529.tar.bz2
@@ -29,7 +28,7 @@ include $(INCLUDE_DIR)/package.mk
 define Download/data
   FILE:=$(PKG_DATA_FILENAME)
   URL:=$(PKG_DATA_URL)
-  MD5SUM:=dff94177781298aaf0b3c2a3c3dea6b2
+  MD5SUM:=fb50d15b52e909d742dd16f0a9882316
 endef
 $(eval $(call Download,data))
 
